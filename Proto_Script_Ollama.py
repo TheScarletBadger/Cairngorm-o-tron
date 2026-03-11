@@ -59,7 +59,7 @@ def get_sais_forecast():
 @tool
 def get_cairngorms():
     """
-    Get list of mountains in the cairngorm national park and their heights and locations mountains not listed here can be assumed to not be in the cairngorms.
+    Get list of mountains in the cairngorm national park and their heights and location mountains not listed here can be assumed to not be in the cairngorms.
 
     """
     print('ping')
@@ -73,16 +73,15 @@ genmodel = ChatOllama(model="hf.co/unsloth/Qwen3-4B-Thinking-2507-GGUF:Q8_0")
 print("Creating agent's toolkit")
 tools = [get_datetime_string, get_mwis_forecast, get_sais_forecast, get_cairngorms]
 tools_by_name = {t.name: t for t in tools}
-genmodel = genmodel.bind_tools([get_datetime_string, get_mwis_forecast,get_sais_forecast])
+genmodel = genmodel.bind_tools(tools)
 
 messages = [
     SystemMessage("""
                   Your role is to provide answers to questions in relation to the cairngorms national park.
-                  When specific mountains are discussed, your answer must consider their height and location.
+                  When specific mountains are discussed, your answer must consider their height and location which can be obtained by using the get_cairngorms tool.
                   It is critical you do not make up information.
-                  If you do not have sufficient information to answer the question using the tools available to you you must decline to answer.
                   """),
-    HumanMessage("I'm thinking of climbing ben macdui tomorrow, what gear do i need")
+    HumanMessage("What peaks would be the safest to climb tomorrow")
 ]
 
 #VIBE CODED GARBAGE FOLLOWS

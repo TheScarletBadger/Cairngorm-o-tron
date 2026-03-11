@@ -82,12 +82,21 @@ def gen_response(prompt, messages, history):
             break
         # Execute each tool call and append results
         for call in response.tool_calls:
-            tools_called.append({call['name']})
+            print(call['name'])
+            tools_called.append(call['name'])
+            print(call['name'])
             tool_fn = tools_by_name[call["name"]]
             result = tool_fn.invoke(call["args"])
             messages.append(ToolMessage(content=result, tool_call_id=call["id"]))
     print(response.content)
-    history.append({"role": "assistant", "content": response.content})
+    print(''.join([tool for tool in tools_called]))
+    
+    if len(tools_called) > 0:
+        history.append({"role": "assistant", "content": response.content, "metadata":{"title":"Tools Called: " + ', '.join([tool for tool in tools_called])}})
+    else:
+        history.append({"role": "assistant", "content": response.content})
+    
+    
     print(history)
     return(history,history,messages)
 
@@ -116,7 +125,7 @@ starting_messages = [
 with gr.Blocks() as app:
     history = gr.State(starting_history) 
     messages = gr.State(starting_messages)  
-    gr.HTML('''<h1>Cairngorm-O-Tron</h1>''')
+    gr.HTML('''<h1>Cairngorm-O-Tron</h1>\n<a href="https://github.com/TheScarletBadger/Cairngorm-o-tron">https://github.com/TheScarletBadger/Cairngorm-o-tron</a>''')
     with gr.Row():
         text_output = gr.Chatbot(value=starting_history,height="80vh",label='Chat history')
     with gr.Row():

@@ -95,6 +95,7 @@ def gen_response(prompt, messages):
             break
         # Execute each tool call and append results
         for call in response.tool_calls:
+            print(call['name'])
             tools_called.append({call['name']})
             tool_fn = tools_by_name[call["name"]]
             result = tool_fn.invoke(call["args"])
@@ -102,4 +103,4 @@ def gen_response(prompt, messages):
     print(response.content)
     return(response.content, messages, tools_called)
 
-gen_response(prompt, messages)
+x,y,z = gen_response(prompt, messages)

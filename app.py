@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+"""
+Gradio App
+"""
+import gradio as gr
 from langchain.messages import HumanMessage, SystemMessage, ToolMessage, AIMessage
 from langchain_ollama import ChatOllama
 from langchain.tools import tool
@@ -66,25 +71,7 @@ def get_peak_details():
     gorms_raw = BeautifulSoup(response.text, 'html.parser').find_all("p")
     return(gorms_raw)
 
-print("Connecting to Ollama")
-genmodel = ChatOllama(model="hf.co/unsloth/Qwen3-4B-Thinking-2507-GGUF:Q8_0",think=True,stream=False)
-print("Creating agent's toolkit")
-tools = [get_datetime_string, get_mwis_forecast, get_sais_forecast, get_peak_details]
-tools_by_name = {t.name: t for t in tools}
-genmodel = genmodel.bind_tools(tools)
-
-messages = [
-    SystemMessage("""
-                  Your role is to provide answers to questions from hikers in relation to the cairngorms national park.
-                  When specific mountains are discussed, your answer must consider their height and location which can be obtained by using the get_cairngorms tool.
-                  It is critical for safety that you do not make up information or guess at unknowns.
-                  """),
-    AIMessage("Mighty Cairngorm-O-Tron will hear your puny human questions now!")        
-                  ]
-
-prompt = "Please give me a concise summary of the conditions on ben macdui's summit today, and tomorrow, if appropriate give a brief statement on any risks and advice for mitigation"
-
-def gen_response(prompt, messages):
+def gen_response(prompt, messages, history):
     messages.append(HumanMessage(prompt))
     tools_called = []
     response = genmodel.invoke(messages)
@@ -100,6 +87,43 @@ def gen_response(prompt, messages):
             result = tool_fn.invoke(call["args"])
             messages.append(ToolMessage(content=result, tool_call_id=call["id"]))
     print(response.content)
-    return(response.content, messages, tools_called)
+    history.append({"role": "assistant", "content": response.content})
+    print(history)
+    return(history,history,messages)
 
-gen_response(prompt, messages)
+def append_to_history(usrtxt,history):
+    history.append({"role": "user", "content": usrtxt})
+    return(history,history)
+
+print("Connecting to Ollama")
+genmodel = ChatOllama(model="hf.co/unsloth/Qwen3-4B-Thinking-2507-GGUF:Q8_0",think=True,stream=False)
+print("Creating agent's toolkit")
+tools = [get_datetime_string, get_mwis_forecast, get_sais_forecast, get_peak_details]
+tools_by_name = {t.name: t for t in tools}
+genmodel = genmodel.bind_tools(tools)
+
+starting_history = [{"role": "assistant", "content": "Mighty Cairngorm-O-Tron will hear your puny questions now!"}]
+starting_messages = [
+    SystemMessage("""
+                  You are a mighty computer.
+                  Your mission is to provide answers to questions from hikers in relation to the cairngorms national park.
+                  When specific mountains are discussed, your answer must consider their height and location which can be obtained by using the get_cairngorms tool.
+                  It is critical for safety that you do not make up information or guess when you have insufficient data from your tools to render a response.
+                  """),
+    AIMessage("Mighty Cairngorm-O-Tron will hear your questions now!")        
+                  ]
+                  
+with gr.Blocks() as app:
+    history = gr.State(starting_history) 
+    messages = gr.State(starting_messages)  
+    gr.HTML('''<h1>Cairngorm-O-Tron</h1>''')
+    with gr.Row():
+        text_output = gr.Chatbot(value=starting_history,height="80vh",label='Chat history')
+    with gr.Row():
+        text_input = gr.Textbox(label='Input')
+        text_input.submit(append_to_history, inputs=[text_input,history], outputs=[text_output,history]).then(gen_response, inputs=[text_input,messages,history], outputs=[text_output,history,messages])
+
+gr.close_all()
+app.launch()
+
+

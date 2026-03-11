@@ -18,9 +18,7 @@ headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:148.0) Ge
 genmodel = HuggingFacePipeline.from_model_id(
     model_id="Qwen/Qwen3-4B-Thinking-2507",
     task="text-generation",
-    device_map="auto",
-    model_kwargs={"torch_dtype": "auto"},
-    pipeline_kwargs={"max_new_tokens": 1000}
+    device_map="auto"
     )
 
 #Get current date and time
@@ -59,11 +57,10 @@ def get_sais_forecast():
         sais = sais + cf + '\n\n' 
     return(sais)
 
-print(get_datetime_string())
-print(get_mwis_forecast())
-print(get_sais_forecast())
+#print(get_datetime_string())
+#print(get_mwis_forecast())
+#print(get_sais_forecast())
 
+prompt = 'Please provide a concise summary of the following reports\n'
 
-prompt = 'You are an experienced mountain guide, please provide a concise summary of the current conditions in the cairngorm mountains'
-
-genmodel.invoke(prompt)
+X = genmodel.invoke(prompt + get_datetime_string() + get_mwis_forecast() + get_sais_forecast())

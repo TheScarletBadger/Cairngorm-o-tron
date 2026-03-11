@@ -74,7 +74,7 @@ def get_peak_details():
 def gen_response(prompt, messages, history):
     messages.append(HumanMessage(prompt))
     tools_called = []
-    response = genmodel.invoke(messages)
+    #response = genmodel.invoke(messages)
     while True:
         response = genmodel.invoke(messages)
         messages.append(response)
@@ -82,17 +82,14 @@ def gen_response(prompt, messages, history):
             break
         # Execute each tool call and append results
         for call in response.tool_calls:
-            print(call['name'])
             tools_called.append(call['name'])
-            print(call['name'])
             tool_fn = tools_by_name[call["name"]]
             result = tool_fn.invoke(call["args"])
             messages.append(ToolMessage(content=result, tool_call_id=call["id"]))
-    print(response.content)
-    print(''.join([tool for tool in tools_called]))
     
     if len(tools_called) > 0:
-        history.append({"role": "assistant", "content": response.content, "metadata":{"title":"Tools Called: " + ', '.join([tool for tool in tools_called])}})
+        history.append({"role": "assistant", "content": ', '.join(tools_called), "metadata": {"title": "Tools Called"}})
+        history.append({"role": "assistant", "content": response.content})
     else:
         history.append({"role": "assistant", "content": response.content})
     
@@ -114,7 +111,7 @@ genmodel = genmodel.bind_tools(tools)
 starting_history = [{"role": "assistant", "content": "Mighty Cairngorm-O-Tron will hear your puny questions now!"}]
 starting_messages = [
     SystemMessage("""
-                  You are a mighty computer.
+                  You are Cairngorm-O-Tron a mighty computer.
                   Your mission is to provide answers to questions from hikers in relation to the cairngorms national park.
                   When specific mountains are discussed, your answer must consider their height and location which can be obtained by using the get_cairngorms tool.
                   It is critical for safety that you do not make up information or guess when you have insufficient data from your tools to render a response.

@@ -65,8 +65,7 @@ def get_cairngorms():
     print('ping')
     response = requests.get('https://www.cairngormpark.co.uk/mountains.htm',headers=headers)
     gorms_raw = BeautifulSoup(response.text, 'html.parser').find_all("p")
-    gorms = gorms_raw.get_text(separator=" ", strip=True)
-    return(gorms)
+    return(gorms_raw)
 
 print("Connecting to Ollama")
 genmodel = ChatOllama(model="hf.co/unsloth/Qwen3-4B-Thinking-2507-GGUF:Q8_0")

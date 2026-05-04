@@ -1,0 +1,233 @@
+[
+  {
+    "name": "Beinn a' Bhuird",
+    "heightM": 1197,
+    "heightFt": 3927,
+    "gridRef": "NJ092006",
+    "info": "This munro has two tops the most northerly being the highest. Beinn Bhuird is the UK's 11th highest mountain. A good route (but not the only one) is from Braemar, then to Invercauld bridge. From there go up Gleann an t-Slugain to the ruin of a lodge of the same name. From the lodge head up to the south top of the Beinn and then on to the north top."
+  },
+  {
+    "name": "Ben Avon",
+    "heightM": 1171,
+    "heightFt": 3842,
+    "gridRef": "NJ131018",
+    "info": "The mountain is most commonly reached from Braemar via the Invercauld Bridge and as with Beinn a' Bhuird above on upwards to the ruin of the lodge."
+  },
+  {
+    "name": "Ben Bhreac",
+    "heightM": 931,
+    "heightFt": 3054,
+    "gridRef": "NO058971",
+    "info": "Often climbed in conjunction with Beinn a' Chaorainn as they are on the same plateau. This is popularly climbed from the car park near Linn of Dee. Walk along the track towards Derry Lodge for about 5k. Then there is a worn path through the trees (NE) onto the gentle heather slopes. From there its best to use your skill to navigate onto the plateau using compass and OS map."
+  },
+  {
+    "name": "Beinn a' Chaorainn",
+    "heightM": 1083,
+    "heightFt": 3553,
+    "gridRef": "NJ045013",
+    "info": "Often climbed in conjunction with Ben Bhreac as they are on the same plateau. See Ben Bhreac for route details."
+  },
+  {
+    "name": "Ben Macdui",
+    "heightM": 1309,
+    "heightFt": 4295,
+    "gridRef": "NN989989",
+    "info": "This is the second highest mountain in the British Isles (Nevis of course being the highest) but is the highest of the Cairngorms Park Mountains. Ben Macdui and Carn a' Mhaim can be climbed together in a good summers day. Park at Linn of Dee and either walk or cycle to Derry Lodge. Cross the Derry Water at the bridge to put you on the north side of Luibeg burn and the west side of Derry Water. Follow the path round until you reach the Lairig Ghru and Luibeg junction. Now follow the path up onto Carn a' Mhaim and then onto Ben Macdui."
+  },
+  {
+    "name": "Carn a' Mhaim",
+    "heightM": 1037,
+    "heightFt": 3403,
+    "gridRef": "NN994951",
+    "info": "See Ben Macdui for the route to climb Carn a' Mhaim."
+  },
+  {
+    "name": "Derry Cairngorm",
+    "heightM": 1155,
+    "heightFt": 3789,
+    "gridRef": "NO017980",
+    "info": "You can climb Derry Cairngorm in a long day out and include Carn a' Mhaim, Ben Macdui and then onto Derry Cairngorm. See directions for the other two. The direct route is a path up Carn Crom immediately after crossing Derry Water (see directions for Ben Macdui)."
+  },
+  {
+    "name": "Cairn Gorm",
+    "heightM": 1244,
+    "heightFt": 4081,
+    "gridRef": "NJ005040",
+    "info": "Quite an uninteresting mountain unless you like skiing, snow fences and ski-tow pylons. It is the 6th highest mountain in the British Isles. The short easy route is to park at the Cairngorm Mountain Ski Centre main car park and choose a route from there."
+  },
+  {
+    "name": "Beinn Mheadhoin",
+    "heightM": 1182,
+    "heightFt": 3878,
+    "gridRef": "NJ024016",
+    "info": "This Munro stands high above Loch Etchachan across from Ben MacDui the highest of the Cairngorm Mountains. The shortest route is from the Coire Cas Car Park at the Cairngorm Mountain Ski Centre. There is quite a lot of navigation involved and a lot of undulation and requires good mountain navigation skills."
+  },
+  {
+    "name": "Bynack More",
+    "heightM": 1090,
+    "heightFt": 3576,
+    "gridRef": "NJ041063",
+    "info": "Bynack More appears separated from the rest of the Cairngorm mountains by Strath Nethy. The popular way to climb this lovely mountain is from Loch Morlich or nearby Glenmore Lodge where there is ample parking just past the Lodge. From this area walk along the path to the Ryvoan Pass. You will then come to the picturesque Loch Uaine with its Scots Pine backdrop. The track splits about a half kilometre later. Take the track going east (right fork) to Bynack Stable. Cross the river Nethy here and use the track which ascends up the moors. Eventually at the north plateau you will find an eroded path which leads up the mountain and eventually to the summit."
+  },
+  {
+    "name": "Braeriach",
+    "heightM": 1296,
+    "heightFt": 4252,
+    "gridRef": "NN953999",
+    "info": "Braeriach, the third largest mountain in the British Isles, is not just a large mountain in height but also in girth. It is usually climbed from a car park part way up the ski road. A path leads down to a footbridge over the Allt Mor then up to the Chalamain Gap then down to the famous Lairig Ghru. Cross the burn then head up to the Sron na Lairige ridge. After the summit of Sron na Lairige head down in a southerly direction to a wide bealach (col) then head up to the top of the Coire Bhrochain then west to the summit."
+  },
+  {
+    "name": "Cairn Toul",
+    "heightM": 1291,
+    "heightFt": 4236,
+    "gridRef": "NN963972",
+    "info": "The mountains of Cairn Toul, Sgor an Lochain Uaine and The Devils Point are quite simply majestic. They can be climbed from Derry Lodge. Follow the path around Luibeg Burn to the Lairig Ghru. From here a couple of hundred metres after the junction in the path, take the bridge crossing to the Corrour Bothy. Behind the bothy a path winds its way up to a bealach (col) near Devils Point. From here the path leads to Devils Point and in the other direction to Cairn Toul and Sgor an Lochain Uaine."
+  },
+  {
+    "name": "Sgor an Lochain Uaine",
+    "heightM": 1258,
+    "heightFt": 4127,
+    "gridRef": "NN954976",
+    "info": "See Cairn Toul for route details."
+  },
+  {
+    "name": "The Devils Point",
+    "heightM": 1004,
+    "heightFt": 3294,
+    "gridRef": "NN976951",
+    "info": "See Cairn Toul for route details."
+  },
+  {
+    "name": "Mullach Clach a' Bhlair",
+    "heightM": 1019,
+    "heightFt": 3343,
+    "gridRef": "NN882927",
+    "info": "Can be climbed along with Monadh Mor, Beinn Bhrotain, and Sgor Gaoith from Achlean Car Park in Glen Feshie. Take the path from Achlean up onto the highest area at Coire Fhearnagan, then head south across the plateau. You can then join the landrover track which heads to the summit."
+  },
+  {
+    "name": "Sgor Gaoith",
+    "heightM": 1118,
+    "heightFt": 3668,
+    "gridRef": "NN882927",
+    "info": "Use the instructions from Monadh Mor to get to Coire Fhearnagan then head to the top of Carn Bhan Mor. From there it is an easy walk to the summit of Sgor Gaoith."
+  },
+  {
+    "name": "Monadh Mor",
+    "heightM": 1113,
+    "heightFt": 3652,
+    "gridRef": "NN938942",
+    "info": "From Achlean head along the track to Coire Fhearnagan then head south to Loch nan Cnapan then go south east to climb Tom Dubh then follow on to the top of Monadh Mor."
+  },
+  {
+    "name": "Beinn Bhrotain",
+    "heightM": 1157,
+    "heightFt": 3796,
+    "gridRef": "NN954922",
+    "info": "For Beinn Bhrotain, get to the summit of Monadh Mor then follow on round to the summit of Beinn Bhrotain."
+  },
+  {
+    "name": "Beinn Dearg",
+    "heightM": 1008,
+    "heightFt": 3307,
+    "gridRef": "NN852777",
+    "info": "This mountain lies north of Blair Atholl and its name means red hill. It is quite a long walk to get to the foot of the peak. The most used route starts from the Glen Tilt Car Park then up Glen Banvie to the bothy beside the burn Allt Sheichean. Further up the mountain you will come across the red scree that give the mountain its name."
+  },
+  {
+    "name": "Carn a' Chlamain",
+    "heightM": 963,
+    "heightFt": 3159,
+    "gridRef": "NN915758",
+    "info": "Park at the Glen Tilt car park then go up the west side road from the river Tilt. Pass Giberts Bridge and Marble Lodge. About 1k further cross the Allt Craoinidh. From there follow the path up the ridge of Carn a' Chlamain."
+  },
+  {
+    "name": "Carn Liath",
+    "heightM": 975,
+    "heightFt": 3199,
+    "gridRef": "NN936698",
+    "info": "One of three munros (Carn Liath, Braigh Coire Chruinn-bhalgain, Carn Nan Gabhar) on the mountain known as Beinn a' Ghlo. All three can be climbed from the car park at Loch Moraig a few miles from Blair Atholl. Follow the obvious track along the moor past the hut and then up the slopes of Carn Liath. To follow on to the other Munros on Beinn a' Ghlo, just keep following the track. The way back can best be done by following the ridges back."
+  },
+  {
+    "name": "Braigh Coire Chruinn-bhalgain",
+    "heightM": 1070,
+    "heightFt": 3510,
+    "gridRef": "NN945724",
+    "info": "One of three munros (Carn Liath, Braigh Coire Chruinn-bhalgain, Carn Nan Gabhar) on the mountain known as Beinn a' Ghlo. For climbing directions see Carn Liath."
+  },
+  {
+    "name": "Carn Nan Gabhar",
+    "heightM": 1060,
+    "heightFt": 3478,
+    "gridRef": "NN971733",
+    "info": "One of three munros (Carn Liath, Braigh Coire Chruinn-bhalgain, Carn Nan Gabhar) on the mountain known as Beinn a' Ghlo. For climbing directions see Carn Liath."
+  },
+  {
+    "name": "An Sgarsoch",
+    "heightM": 1006,
+    "heightFt": 3301,
+    "gridRef": "NN933836",
+    "info": "A remote mountain normally climbed along with Carn an Fhidhleir. To climb this hill park at the Linn of Dee Car Park. Walk or cycle along the north bank of the Dee to White Bridge then on to the ruin of Geldie Lodge. From there head up to An Sgarsoch and then on to Carn an Fhidhleir."
+  },
+  {
+    "name": "Carn an Fhidhleir",
+    "heightM": 994,
+    "heightFt": 3261,
+    "gridRef": "NN904842",
+    "info": "A remote mountain normally climbed along with An Sgarsoch. See directions for An Sgarsoch."
+  },
+  {
+    "name": "Glas Tulaichean",
+    "heightM": 1051,
+    "heightFt": 3448,
+    "gridRef": "NO051760",
+    "info": "Fairly remote mountain usually climbed in conjunction with Carn an Righ. Nearest access is from Spittal of Glenshee. Walk or cycle to Dalmunzie House Hotel, or take your car there and pay a fee for the car park. Walk north up the track past the farm and on up past the lodge ruin. Keep on this track and it will take you to the summit of Glas Tulaichean."
+  },
+  {
+    "name": "Carn an Righ",
+    "heightM": 1029,
+    "heightFt": 3376,
+    "gridRef": "NO028772",
+    "info": "Usually climbed in conjunction with Glas Tulaichean. From that summit continue down the north ridge to join a path passing Mam nan Carn. Turn left and this path summits on Carn an Righ. The return route is to follow that same path down Gleann Taitneach."
+  },
+  {
+    "name": "Beinn Iutharn Mhor",
+    "heightM": 1045,
+    "heightFt": 3428,
+    "gridRef": "NO045792",
+    "info": "Often climbed in conjunction with Carn Bhac. These remote mountains can be accessed from Inverey Car Park at the start of the Glen Ey Tracks. Walk or cycle up the glen past Altanour Lodge (approx 8.25km). Identify the Allt Beinn Iutharn and follow it until you reach the slopes that climb up onto Iuthern Beag. From there head up onto Mam Nan Carn and then to the summit of Beinn Iutharn Mhor."
+  },
+  {
+    "name": "Carn Bhac",
+    "heightM": 946,
+    "heightFt": 3104,
+    "gridRef": "NO051832",
+    "info": "Use the directions to the summit of Beinn Iutharn Mhor then head along the north eastern ridge and down to the bealach (col) which then leads up to Carn Bhac via its southerly top. The easiest return route is to head south east to the Allt an Odhar and back to the ruined Altanour Lodge."
+  },
+  {
+    "name": "An Socach",
+    "heightM": 944,
+    "heightFt": 3097,
+    "gridRef": "NO079799",
+    "info": "From the A93 at the Baddoch Car Park follow the private track up past the Baddoch Cottage. A path from Loch Vrotachan joins the track from the left and another path leads off to the right (north westerly). Take that right hand path up the slopes of An Socach."
+  },
+  {
+    "name": "The Cairnwell",
+    "heightM": 933,
+    "heightFt": 3061,
+    "gridRef": "NO134773",
+    "info": "Climb this mountain with Carn Aosda, and usually Carn a' Gheoidh can be added too. There are various ways to do this from the Glenshee Mountain Ski Car Park. Both mountains can be done and back to the car in under an hour and a half."
+  },
+  {
+    "name": "Carn Aosda",
+    "heightM": 917,
+    "heightFt": 3009,
+    "gridRef": "NO091762",
+    "info": "See The Cairnwell for route details."
+  },
+  {
+    "name": "Carn a' Gheoidh",
+    "heightM": 975,
+    "heightFt": 3199,
+    "gridRef": "NO107767",
+    "info": "See The Cairnwell for route details."
+  }
+]

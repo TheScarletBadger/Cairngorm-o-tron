@@ -4,73 +4,10 @@ Gradio App for interaction with the Cairngorm-O-Tron agent
 """
 import gradio as gr
 from langchain.messages import HumanMessage, SystemMessage, ToolMessage, AIMessage
-from langchain_ollama import ChatOllama
-from langchain.tools import tool
-import requests
-import re
-from datetime import datetime
-from bs4 import BeautifulSoup
-
-#Spoof headers for use with requests
-headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:148.0) Gecko/20100101 Firefox/148.0"}
-
-#Define tools accessible to agent
-@tool
-def get_datetime_string():
-    """
-    Get the current date and time
-
-    """
-    now = datetime.now()
-    str1=now.strftime("%H:%M %A %d %B")
-    str2=now.strftime("%d/%m/%y")
-    return(f'---\n\nTime\nThe current date and time is {str1} ({str2})')
-
-@tool
-def get_mwis_forecast():
-    """
-    Get mountain weather forecast for the Cairngorms from the Mountain Weather Informtion Service (MWIS)
-
-    """
-    response = requests.get('https://www.mwis.org.uk/forecasts/scottish/cairngorms-np-and-monadhliath/text',headers=headers)
-    mwis_raw = BeautifulSoup(response.text, 'html.parser').find_all('div', class_='forecast')
-    mwis='---\n\nMountain Weather Information Service (MWIS) Forecast\n\n'
-    for forecast in mwis_raw:
-        cf = forecast.get_text(separator=" ", strip=True)
-        cf = re.sub(r'\s+', ' ', cf).strip()
-        mwis = mwis + cf + '\n\n' 
-    return(mwis)
-
-@tool
-def get_sais_forecast():
-    """
-    Get avalanche risk forecast for the Cairngorms from Scottish Avalanche Information Service (SAIS)
-    """
-    response = requests.get('https://www.sais.gov.uk/northern-cairngorms',headers=headers)
-    raw = BeautifulSoup(response.text, 'html.parser').find_all('div', id='forecast-info')
-    sais ='---\n\nScottish Avalanche Information Service (SAIS) Forecast - Northern Cairngorms\n\n'
-    for forecast in raw:
-        cf = forecast.get_text(separator=" ", strip=True)
-        cf = re.sub(r'\s+', ' ', cf).strip()
-        sais = sais + cf + '\n\n' 
-    response = requests.get('https://www.sais.gov.uk/southern-cairngorms',headers=headers)
-    raw = BeautifulSoup(response.text, 'html.parser').find_all('div', id='forecast-info') 
-    sais = sais + '---\n\nScottish Avalanche Information Service (SAIS) Forecast - Southern Cairngorms\n\n'    
-    for forecast in raw:
-        cf = forecast.get_text(separator=" ", strip=True)
-        cf = re.sub(r'\s+', ' ', cf).strip()
-        sais = sais + cf + '\n\n' 
-    return(sais)
-
-@tool
-def get_peak_details():
-    """
-    Get list of mountain peaks in the cairngorm national park, their heights and location.
-
-    """
-    response = requests.get('https://www.cairngormpark.co.uk/mountains.htm',headers=headers)
-    gorms_raw = BeautifulSoup(response.text, 'html.parser').find_all("p")
-    return(gorms_raw)
+from langchain_openai import ChatOpenAI
+from toolkit.PeakTools import Peaktool_Query_Name, Peaktool_Query_HeightM, Peaktool_Query_HeightFt, Peaktool_List_Peaks
+from toolkit.WebTools import Webtool_MWIS, Webtool_SAIS
+from toolkit.SysTools import Systool_Current_Time
 
 #Define functions for use by gradio app
 def gen_response(prompt, messages, history):
@@ -107,26 +44,35 @@ def append_to_history(usrtxt,history):
     history.append({"role": "user", "content": usrtxt})
     return(history,history)
 
-#connect to local ollama server and load Qwen3-4b-Thinking model
-print("Connecting to Ollama")
-genmodel = ChatOllama(model="hf.co/unsloth/Qwen3-4B-Thinking-2507-GGUF:Q8_0",think=True,stream=False)
+
+#connect to local llm server and load Qwen3-4b-Thinking model
+print("Initializing model")
+genmodel = ChatOpenAI(
+    base_url="http://localhost:1234/v1",
+    api_key="xxxxxx",
+    model="qwen/qwen3-4b-thinking-2507",
+    temperature=0.3
+)
 
 #bind tools to model
 print("Creating agent's toolkit")
-tools = [get_datetime_string, get_mwis_forecast, get_sais_forecast, get_peak_details]
+tools = [Peaktool_Query_Name, Peaktool_Query_HeightM, Peaktool_Query_HeightFt, Peaktool_List_Peaks, Webtool_MWIS, Webtool_SAIS, Systool_Current_Time]
 tools_by_name = {t.name: t for t in tools}
 genmodel = genmodel.bind_tools(tools)
+
+#Spoof headers for use with requests
+headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:148.0) Gecko/20100101 Firefox/148.0"}
 
 #initilize messages and gradio chatbot history
 starting_history = [{"role": "assistant", "content": "Mighty Cairngorm-O-Tron will hear your puny questions now!"}]
 starting_messages = [
     SystemMessage("""
                   You are Cairngorm-O-Tron a mighty computer.
-                  Your mission is to provide answers to questions from hikers in relation to the cairngorms national park.
-                  When specific mountains are discussed, your answer must consider their height and location which can be obtained by using the get_cairngorms tool.
-                  It is critical for safety that you do not make up information or guess when you have insufficient data from your tools to render a response.
+                  Your mission is to provide answers to questions from puny human hikers in relation to the cairngorms national park.
+                  It is critical for safety that you do not make up information or guess at unknowns always use the tools available to you.
+                  In all your responses maintain the persona of the Mighty Cairngorm-O-Tron
                   """),
-    AIMessage("Mighty Cairngorm-O-Tron will hear your puny questions now!")        
+    AIMessage("Mighty Cairngorm-O-Tron will hear your puny human questions now!")        
                   ]
                   
 with gr.Blocks() as app:

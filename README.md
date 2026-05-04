@@ -1,6 +1,6 @@
 # Cairngorm-O-Tron
 
-Cairngorm-O-Tron is a very simple agentic AI built while getting to grips with langchain. His purpose in life is to answer questions related to hiking conditions in the Cairngorms national park. I used Ollama to serve the model locally and used the very dinky but surprisingly powerful Qwen3-4B-Thinking-2507 as the generative model. 
+Cairngorm-O-Tron is a very simple agentic AI built while getting to grips with langchain. His purpose in life is to answer questions related to hiking conditions in the Cairngorms national park. I used LM studio to serve the underlying LLM locally and used the very dinky but surprisingly powerful Qwen3-4B-Thinking-2507 as the generative model. 
 
 To enable this Cairngorm-O-Tron's toolkit includes the ability to browse the Mountain Weather Information Service (MWIS) and Scottish Avalanche Information Service (SAIS) websites as well as the National parks website.
 
